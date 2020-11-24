@@ -4,7 +4,7 @@ import streamlit as st
 import pandas as pd
 import pickle
 import numpy as np
-from pycaret.regression import *
+from pycaret.regression import load_model, predict_model
 
 
 # entorno streamlit
