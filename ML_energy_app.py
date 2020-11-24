@@ -1,11 +1,7 @@
 # -*- coding: utf-8 -*-
-# streamlit run C:\Users\RTMG\Python\ML_energia\my_app\ML_energy_app.py
-
 
 import streamlit as st
 import pandas as pd
-#from sklearn import datasets
-#from sklearn.ensemble import RandomForestClassifier
 import pickle
 import numpy as np
 from pycaret.regression import *
@@ -71,16 +67,11 @@ df = user_input_features()
 st.subheader('Parámetros de entrada')
 st.write(df.set_index([[0]]).T)
 
-
 # load model
 import os
 folder = os.path.dirname(os.path.abspath(__file__))
 name_model = os.path.join(folder, 'model')
-#name_model = 'C:/Users/RTMG/Python/ML_energia/my_app/model'
 load_final_model = load_model(name_model)
-#name_model = 'C:/Users/RTMG/Python/ML_energia/my_app/model.pkl'
-#load_final_model = pickle.load(open('name_model', 'rb'))
-
 
 # Apply model to make predictions
 new_prediction = predict_model(load_final_model, data=df.iloc[[-1]])
@@ -90,20 +81,3 @@ predict = np.round_(np.exp(predict),decimals=4)
 
 st.subheader('Predicción del Consumo de energía no renovable (kWh/m²)')
 st.write('Consumo de Energía ESTIMADO: {} kWh/m²'.format(predict))
-#st.write(prediction)
-
-#prediction = load_clf.predict(df)
-#prediction_proba = load_clf.predict_proba(df)
-"""
-st.subheader('Class labels and their corresponding index number')
-#st.write(iris.target_names)
-iris_names = np.array(['setosa', 'versicolor', 'virginica'])
-st.write(iris_names)
-
-st.subheader('Prediction')
-st.write(iris_names[prediction])
-#st.write(prediction)
-
-st.subheader('Prediction Probability')
-st.write(prediction_proba)
-"""
