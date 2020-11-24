@@ -9,8 +9,12 @@ from pycaret.regression import load_model, predict_model
 
 # entorno streamlit
 st.write("""
-# **Machine Learning Energy**
-Esta aplicación predice el consumo de energía (kWh/m²) a partir de miles de datos de certificados energéticos elaborados con el programa **CE3X**.
+# **Energy Certification** with **Machine Learning**
+\n*(en pruebas)*
+\nEsta aplicación predice el consumo de energía (kWh/m²) a partir de miles de datos de certificados energéticos elaborados con el programa **[CE3X](https://www.efinova.es/CE3X)**.
+\n**Modelo:** Esta herramienta se desarrolla mediante aprendizaje automático supervisado (*supervised machine learning*) con algoritmos de regressión. Se ha diseñado un modelo de conjunto (*enseble learning*) que combina tres algoritmos de aprendizaje distintos basados en *boosting*: CatBoost Regressor [*catboost*](https://catboost.ai/), Light Gradient Boosting Machine [*lightgbm*](https://lightgbm.readthedocs.io/) y Gradient Boosting Regressor [*gbr*](https://scikit-learn.org/stable/auto_examples/ensemble/plot_gradient_boosting_regression.html).
+\n**Datos:** Se utilizan más de 300.000 datos de certificados energéticos de viviendas individuales de la provincia de Barcelona (ubicados en zona climática C2), procedentes del [Instituto Catalán de Energía](http://icaen.gencat.cat/es/inici/).
+\n**Precisión:** El modelo de conjunto se ha probado en un set de datos de entrenamiento obteniéndose un R2 de 0.888, y en el set de prueba un R2 de 0.732. Para datos nuevos no utilizados en el modelo se ha obtenido un R2 de 0.790, lo que indica que el modelo generaliza correctamente. 
 """)
 
 st.sidebar.header('Parámetros de entrada')
@@ -77,7 +81,6 @@ load_final_model = load_model(name_model)
 new_prediction = predict_model(load_final_model, data=df.iloc[[-1]])
 predict = (new_prediction['Label'].values[[-1]])
 predict = np.round_(np.exp(predict),decimals=4)
-#print('Consumo de Energía ESTIMADO: {} kWh/m²'.format(predict))
 
 st.subheader('Predicción del Consumo de energía no renovable (kWh/m²)')
-st.write('Consumo de Energía ESTIMADO: {} kWh/m²'.format(predict))
+st.write('Consumo de Energía ESTIMADO: **{}** kWh/m²'.format(predict))
