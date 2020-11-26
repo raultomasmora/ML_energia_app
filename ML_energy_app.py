@@ -5,6 +5,7 @@ import pandas as pd
 import pickle
 import numpy as np
 from pycaret.regression import load_model, predict_model
+import matplotlib.pyplot as plt
 
 
 # entorno streamlit
@@ -80,7 +81,58 @@ load_final_model = load_model(name_model)
 # Apply model to make predictions
 new_prediction = predict_model(load_final_model, data=df.iloc[[-1]])
 predict = (new_prediction['Label'].values[[-1]])
-predict = np.round_(np.exp(predict),decimals=4)
+predict = np.round_(np.exp(predict),decimals=1)
 
-st.subheader('Predicción del Consumo de energía no renovable (kWh/m²)')
+st.subheader('Predicción del Consumo de energía no renovable')
 st.write('Consumo de Energía ESTIMADO: **{}** kWh/m²'.format(predict))
+
+# Para imprimir el gráfico de las escalas
+
+def plot_escala_letras(results, category_names, line_value):
+    """
+    Parameters
+    ----------
+    results : dict
+        A mapping from question labels to a list of answers per category.
+        It is assumed all lists contain the same number of entries and that
+        it matches the length of *category_names*.
+    category_names : list of str
+        The category labels.
+    """
+    line_value = line_value
+    labels = list(results.keys())
+    data = np.array(list(results.values()))
+    data_cum = data.cumsum(axis=1)
+    category_colors = plt.get_cmap('RdYlGn_r')(
+        np.linspace(0.15, 0.85, data.shape[1]))
+
+    fig, ax = plt.subplots(figsize=(10, 1))
+    ax.invert_yaxis()
+    ax.xaxis.set_visible(True)
+    ax.set_xlim(0, np.sum(data, axis=1).max())
+
+    for i, (colname, color) in enumerate(zip(category_names, category_colors)):
+        widths = data[:, i]
+        starts = data_cum[:, i] - widths
+        ax.barh(labels, widths, left=starts, height=0.5,
+                label=colname, color=color)
+        xcenters = starts + widths / 2
+
+        r, g, b, _ = color
+        text_color = 'white' if r * g * b < 0.5 else 'darkgrey'
+        for y, (x, c) in enumerate(zip(xcenters, category_names)):
+            ax.text(x, y, str(category_names[i]), ha='center', va='center',
+                    color=text_color)
+    #ax.legend(ncol=len(category_names), bbox_to_anchor=(0, 1),
+    #          loc='lower left', fontsize='small')
+    ax.axvline(x=line_value, color='black', label='Estimado', linestyle='--', linewidth=2)
+    st.pyplot(fig) 
+    #return fig, ax
+
+category_names = ['A', 'B', 'C', 'D', 'E', 'F', 'G']
+results = { 'Zona C2': [23.4, 14.6, 20.8, 31.7, 94.0, 24.0, 291.5] }
+line_value = predict
+
+plot_escala_letras(results, category_names, line_value)
+
+# fin gráfico escalas
