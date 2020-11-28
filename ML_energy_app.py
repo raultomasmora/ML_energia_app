@@ -9,6 +9,15 @@ import matplotlib.pyplot as plt
 
 
 # entorno streamlit
+#PARA QUITAR LAS MARCAS
+hide_st_style = """
+    <style>
+        #MainMenu {visibility: hidden;}
+        footer {visibility: hidden;}
+    </style>
+"""
+st.markdown(hide_st_style, unsafe_allow_html=True)
+
 st.write("""
 # **Energy Certification** with **Machine Learning**
 \n*(en pruebas)*
@@ -24,8 +33,8 @@ def user_input_features():
     # selectbox
     NORMATIVA_CONSTRUCCIO = st.sidebar.selectbox('Normativa de construcción', 
                             ("Ant_NBECT79", "NBECT79", "CTE2006"))
-    SUPERFICI_HAB = st.sidebar.slider('Superficie habitable (m²)', 6. , 427. , 70.1 )
-    COMPACITAT = st.sidebar.slider('Compacidad (m³/m²)', 0.2 , 25. , 3.4 )
+    SUPERFICI_HAB = st.sidebar.slider('Superficie habitable (m²)', 20. , 250. , 70. )
+    COMPACITAT = st.sidebar.slider('Compacidad (m³/m²)', 0.5 , 18. , 3.4 )
     VENTILACIO_USO_RESIDENCIAL = st.sidebar.slider('Ventilación uso residencial (renovaciones/hora)', 0. , 4. , 0.6 )
     VENTILACIO_INFILTRACIONS = st.sidebar.slider('Ventilación por infiltraciones (renovaciones/hora)', 0. , 4. , 0.7 )
     DEMANDA_ACS = st.sidebar.slider('Demanda de ACS (litros/día)', 0. , 1122. , 71.5 )
