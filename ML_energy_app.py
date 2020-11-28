@@ -12,7 +12,7 @@ import matplotlib.pyplot as plt
 st.write("""
 # **Energy Certification** with **Machine Learning**
 \n*(en pruebas)*
-\nEsta aplicación predice el consumo de energía (kWh/m²) a partir de miles de datos de certificados energéticos elaborados con el programa **[CE3X](https://www.efinova.es/CE3X)**.
+\nEsta aplicación predice el consumo de energía (kWh/m²año) a partir de miles de datos de certificados energéticos elaborados con el programa **[CE3X](https://www.efinova.es/CE3X)**.
 \n**Modelo:** Esta herramienta se desarrolla mediante aprendizaje automático supervisado (*supervised machine learning*) con algoritmos de regresión. Se ha diseñado un modelo de conjunto (*enseble learning*) que combina tres algoritmos de aprendizaje distintos basados en *boosting*: CatBoost Regressor [*catboost*](https://catboost.ai/), Light Gradient Boosting Machine [*lightgbm*](https://lightgbm.readthedocs.io/) y Gradient Boosting Regressor [*gbr*](https://scikit-learn.org/stable/auto_examples/ensemble/plot_gradient_boosting_regression.html).
 \n**Datos:** Se utilizan más de 300.000 datos de certificados energéticos de viviendas individuales de la provincia de Barcelona (ubicados en zona climática C2), procedentes del [Instituto Catalán de Energía](http://icaen.gencat.cat/es/inici/).
 \n**Precisión:** El modelo de conjunto se ha probado en un set de datos de entrenamiento obteniéndose un R2 de 0.888, y en el set de prueba un R2 de 0.732. Para datos nuevos no utilizados en el modelo se ha obtenido un R2 de 0.790, lo que indica que el modelo generaliza correctamente. 
@@ -44,7 +44,7 @@ def user_input_features():
                     "Bomba de calor", "Caldera Condensación", "Otros sistemas") )
     InstREF_Tipo = st.sidebar.selectbox('Tipo de instalación para refrigeración', 
                    ("Sin definir", "Maquina frigorífica", "Bomba de calor", "Otros sistemas") ) 
-    Reducc_EPNoR = st.sidebar.slider('Reducc_EPNoR', 0. , 352.8 , 1.2 )
+    Reducc_EPNoR = st.sidebar.slider('Reducc_EPNoR', 0. , 352.8 , 0. )
 
     data = {'NORMATIVA_CONSTRUCCIO': NORMATIVA_CONSTRUCCIO,
             'SUPERFICI_HAB': SUPERFICI_HAB,
@@ -84,7 +84,7 @@ predict = (new_prediction['Label'].values[[-1]])
 predict = np.round_(np.exp(predict),decimals=1)
 
 st.subheader('Predicción del Consumo de energía no renovable')
-st.write('Consumo de Energía ESTIMADO: **{}** kWh/m²'.format(predict))
+st.write('Consumo de Energía ESTIMADO: **{}** kWh/m²año'.format(predict))
 
 # Para imprimir el gráfico de las escalas
 
