@@ -153,21 +153,21 @@ fig_transm.add_shape( # add a vertical line
     )
 
 if df.iloc[0]['NORMATIVA_CONSTRUCCIO'] == 'CTE2006':
-    fig_transm.add_shape( # añadir rango CTE
+    fig_transm.add_shape( 
         type="rect", x0=0.60, x1=0.86, xref="x", y0=0, y1=1, yref="paper",
         line_width=0, fillcolor=px.colors.qualitative.Plotly[2], opacity=0.2 )
     fig_transm.add_annotation(text="Transmitancias U <br>habituales para <br>CTE2016",
                       xref="x", yref="paper",
                       x=0.73, y=1, showarrow=False)
 if df.iloc[0]['NORMATIVA_CONSTRUCCIO'] == 'NBECT79':
-    fig_transm.add_shape( # añadir rango CT79
+    fig_transm.add_shape( 
         type="rect", x0=0.66, x1=1.80, xref="x", y0=0, y1=1, yref="paper",
         line_width=0, fillcolor=px.colors.qualitative.Plotly[1], opacity=0.2 )
     fig_transm.add_annotation(text="Transmitancias U <br>habituales para <br>NBECT79",
                       xref="x", yref="paper",
                       x=1.23, y=1, showarrow=False)
 if df.iloc[0]['NORMATIVA_CONSTRUCCIO'] == 'Ant_NBECT79':
-    fig_transm.add_shape( # añadir rango ant_CT79
+    fig_transm.add_shape( 
         type="rect", x0=1.69, x1=2.38, xref="x", y0=0, y1=1, yref="paper",
         line_width=0, fillcolor=px.colors.qualitative.Plotly[0], opacity=0.2 )
     fig_transm.add_annotation(text="Transmitancias U <br>habituales para <br>Ant_NBECT79",
