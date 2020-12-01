@@ -37,12 +37,11 @@ st.sidebar.image('logo.png')
 st.sidebar.header('Parámetros de entrada')
 
 def user_input_features():
-    # selectbox
     NORMATIVA_CONSTRUCCIO = st.sidebar.selectbox('Normativa de construcción', 
                             ("Ant_NBECT79", "NBECT79", "CTE2006"))
     SUPERFICI_HAB = st.sidebar.slider('Superficie habitable (m²)', 20. , 250. , 70. )
     COMPACITAT = st.sidebar.slider('Compacidad (m³/m²)', 0.5 , 18. , 3.4 )
-    #VENTILACIO_USO_RESIDENCIAL = st.sidebar.slider('Ventilación uso residencial (renovaciones/hora)', 0.3 , 1. , 0.65 )
+    VENTILACIO_USO_RESIDENCIAL = st.sidebar.slider('Ventilación uso residencial (renovaciones/hora)', 0.3 , 1. , 0.65 )
     VENTILACIO_INFILTRACIONS = st.sidebar.slider('Ventilación por infiltraciones (renovaciones/hora)', 0.4 , 1.3 , 0.63 )
     DEMANDA_ACS = st.sidebar.slider('Demanda de ACS (litros/día)', 0. , 1122. , 71.5 )
     OPACOS_Fach_sum = st.sidebar.slider('Suma de superficies en fachada (m²)', 7. , 250. , 45. )
@@ -54,7 +53,6 @@ def user_input_features():
     HUECOS_fsol = st.sidebar.slider('Factor solar promedio en huecos (g)', 0. , 1. , 0.5 )
     PUENTE_sum = st.sidebar.slider('Suma de longitudes con puentes térmicos (metros)', 0. , 1100.5 , 70.2 )
     PUENTE_trans = st.sidebar.slider('Transmitancia térmica media lineal en puentes térmicos (W/mK)', 0. , 2.1 , 0.8 )
-    # selectbox
     InstCAL_Tipo = st.sidebar.selectbox('Tipo de instalación para calefacción', 
                    ("Sin definir", "Efecto Joule", "Caldera Estándar", 
                     "Bomba de calor", "Caldera Condensación", "Otros sistemas") )
@@ -65,7 +63,7 @@ def user_input_features():
     data = {'NORMATIVA_CONSTRUCCIO': NORMATIVA_CONSTRUCCIO,
             'SUPERFICI_HAB': SUPERFICI_HAB,
             'COMPACITAT': COMPACITAT,
-            #'VENTILACIO_USO_RESIDENCIAL': VENTILACIO_USO_RESIDENCIAL,
+            'VENTILACIO_USO_RESIDENCIAL': VENTILACIO_USO_RESIDENCIAL,
             'VENTILACIO_INFILTRACIONS': VENTILACIO_INFILTRACIONS,
             'DEMANDA_ACS': DEMANDA_ACS,
             'OPACOS_Fach_sum': OPACOS_Fach_sum,
@@ -97,16 +95,6 @@ st.subheader('Predicción del Consumo de energía no renovable')
 st.write('Consumo de Energía ESTIMADO:  **{:.1f}**  kWh/m²año'.format(predict))
 
 def plot_escala_letras(results, category_names, line_value):
-    """
-    Parameters
-    ----------
-    results : dict
-        A mapping from question labels to a list of answers per category.
-        It is assumed all lists contain the same number of entries and that
-        it matches the length of *category_names*.
-    category_names : list of str
-        The category labels.
-    """
     line_value = line_value
     labels = list(results.keys())
     data = np.array(list(results.values()))
@@ -131,15 +119,11 @@ def plot_escala_letras(results, category_names, line_value):
         for y, (x, c) in enumerate(zip(xcenters, category_names)):
             ax.text(x, y, str(category_names[i]), ha='center', va='center',
                     color=text_color)
-    #ax.legend(ncol=len(category_names), bbox_to_anchor=(0, 1),
-    #          loc='lower left', fontsize='small')
     ax.axvline(x=line_value, color='black', label='Estimado', linestyle='--', linewidth=2)
     st.pyplot(fig) 
-    #return fig, ax
 
 category_names = ['A', 'B', 'C', 'D', 'E', 'F', 'G']
 results = { 'Zona C2': [23.4, 14.6, 20.8, 31.7, 94.0, 24.0, 291.5] }
-#line_value = predict
 
 plot_escala_letras(results, category_names, predict)
 
