@@ -6,10 +6,9 @@ import pickle
 import numpy as np
 from pycaret.regression import load_model, predict_model
 import matplotlib.pyplot as plt
-
+import os
 
 # entorno streamlit
-#PARA QUITAR LAS MARCAS
 hide_st_style = """
     <style>
         #MainMenu {visibility: hidden;}
@@ -18,15 +17,23 @@ hide_st_style = """
 """
 st.markdown(hide_st_style, unsafe_allow_html=True)
 
-st.write("""
-# **Energy Certification** with **Machine Learning**
-\n*(en pruebas)*
-\nEsta aplicación predice el consumo de energía (kWh/m²año) a partir de miles de datos de certificados energéticos elaborados con el programa **[CE3X](https://www.efinova.es/CE3X)**.
-\n**Modelo:** Esta herramienta se desarrolla mediante aprendizaje automático supervisado (*supervised machine learning*) con algoritmos de regresión. Se ha diseñado un modelo de conjunto (*enseble learning*) que combina tres algoritmos de aprendizaje distintos basados en *boosting*: CatBoost Regressor [*catboost*](https://catboost.ai/), Light Gradient Boosting Machine [*lightgbm*](https://lightgbm.readthedocs.io/) y Gradient Boosting Regressor [*gbr*](https://scikit-learn.org/stable/auto_examples/ensemble/plot_gradient_boosting_regression.html).
-\n**Datos:** Se utilizan más de 300.000 datos de certificados energéticos de viviendas individuales de la provincia de Barcelona (ubicados en zona climática C2), procedentes del [Instituto Catalán de Energía](http://icaen.gencat.cat/es/inici/).
-\n**Precisión:** El modelo de conjunto se ha probado en un set de datos de entrenamiento obteniéndose un R2 de 0.888, y en el set de prueba un R2 de 0.732. Para datos nuevos no utilizados en el modelo se ha obtenido un R2 de 0.790, lo que indica que el modelo generaliza correctamente. 
-""")
+try:
+    folder = os.path.dirname(os.path.abspath(__file__))
+    name_model = os.path.join(folder, 'model')
+    final_model = load_model(name_model)
+except: 
+    print("Se necesita un modelo entrenado")
 
+st.title('Energy Certification with Machine Learning')
+st.error('en pruebas...')
+with st.beta_expander("Información:", expanded=True):
+    st.success('Proyecto elaborado por [rtmg@ua.es](https://cvnet.cpd.ua.es/curriculum-breve/es/mora-garcia-raul-tomas/7187) en colaboración con [Grupo Valero](https://www.grupovalero.com/) durante el año 2020. Subvención AEST/2019/005 del Programa para la promoción de la investigación científica, el desarrollo tecnológico y la innovación en la Comunitat Valenciana (Anexo VII) [DOGV nº8355](http://www.dogv.gva.es/datos/2018/08/06/pdf/2018_7758.pdf).')
+    st.info('\n\nEsta aplicación predice el consumo de energía (kWh/m²año) a partir de miles de datos de certificados energéticos elaborados con el programa **[CE3X](https://www.efinova.es/CE3X)**. Después se evalúa la posible reducción del consumo de energía al mejorar el aislamiento de la envolvente.'
+    '\n\n**Modelo:** Esta herramienta se desarrolla mediante aprendizaje automático supervisado (*supervised machine learning*) con algoritmos de regresión. Se ha diseñado un modelo de conjunto (*enseble learning*) que combina tres algoritmos de aprendizaje distintos basados en *boosting*: CatBoost Regressor [*catboost*](https://catboost.ai/), Light Gradient Boosting Machine [*lightgbm*](https://lightgbm.readthedocs.io/) y Gradient Boosting Regressor [*gbr*](https://scikit-learn.org/stable/auto_examples/ensemble/plot_gradient_boosting_regression.html).'
+    '\n\n**Datos:** Se utilizan más de 300.000 datos de certificados energéticos de viviendas individuales de la provincia de Barcelona (ubicados en zona climática C2), procedentes del [Instituto Catalán de Energía](http://icaen.gencat.cat/es/inici/).'
+    '\n\n**Precisión:** El modelo de conjunto se ha probado en un set de datos de entrenamiento obteniéndose un R2 de 0.888, y en el set de prueba un R2 de 0.732. Para datos nuevos no utilizados en el modelo se ha obtenido un R2 de 0.790, lo que indica que el modelo generaliza correctamente. ')
+
+st.sidebar.image('./logo.png')
 st.sidebar.header('Parámetros de entrada')
 
 def user_input_features():
@@ -35,18 +42,18 @@ def user_input_features():
                             ("Ant_NBECT79", "NBECT79", "CTE2006"))
     SUPERFICI_HAB = st.sidebar.slider('Superficie habitable (m²)', 20. , 250. , 70. )
     COMPACITAT = st.sidebar.slider('Compacidad (m³/m²)', 0.5 , 18. , 3.4 )
-    VENTILACIO_USO_RESIDENCIAL = st.sidebar.slider('Ventilación uso residencial (renovaciones/hora)', 0. , 4. , 0.6 )
-    VENTILACIO_INFILTRACIONS = st.sidebar.slider('Ventilación por infiltraciones (renovaciones/hora)', 0. , 4. , 0.7 )
+    #VENTILACIO_USO_RESIDENCIAL = st.sidebar.slider('Ventilación uso residencial (renovaciones/hora)', 0.3 , 1. , 0.65 )
+    VENTILACIO_INFILTRACIONS = st.sidebar.slider('Ventilación por infiltraciones (renovaciones/hora)', 0.4 , 1.3 , 0.63 )
     DEMANDA_ACS = st.sidebar.slider('Demanda de ACS (litros/día)', 0. , 1122. , 71.5 )
-    OPACOS_Fach_sum = st.sidebar.slider('Suma de superficies en fachada (m²)', 2.5 , 1125.9 , 45.7 )
-    OPACOS_Fach_trans = st.sidebar.slider('Transmitancia térmica media en fachadas (W/m² K)', 0.1 , 4.1 , 1.7 )
+    OPACOS_Fach_sum = st.sidebar.slider('Suma de superficies en fachada (m²)', 7. , 250. , 45. )
+    OPACOS_Fach_trans = st.sidebar.slider('Transmitancia térmica media en fachadas (W/m²K)', 0.2 , 3.2 , 1.7 )
     OPACOS_Cubi_sum = st.sidebar.slider('Suma de superficies en cubierta (m²)', 0. , 1224.3 , 11.7 )
-    OPACOS_Cubi_trans = st.sidebar.slider('Transmitancia térmica media en cubiertas (W/m² K)', 0. , 5.7 , 0.4 )
+    OPACOS_Cubi_trans = st.sidebar.slider('Transmitancia térmica media en cubiertas (W/m²K)', 0. , 5.7 , 0.4 )
     HUECOS_sum = st.sidebar.slider('Suma de superficies en huecos (m²)', 1. , 157.9 , 11.8 )
-    HUECOS_trans = st.sidebar.slider('Transmitancia térmica media en huecos (W/m² K)', 0.6 , 7. , 4.4 )
+    HUECOS_trans = st.sidebar.slider('Transmitancia térmica media en huecos (W/m²K)', 0.6 , 7. , 4.4 )
     HUECOS_fsol = st.sidebar.slider('Factor solar promedio en huecos (g)', 0. , 1. , 0.5 )
     PUENTE_sum = st.sidebar.slider('Suma de longitudes con puentes térmicos (metros)', 0. , 1100.5 , 70.2 )
-    PUENTE_trans = st.sidebar.slider('Transmitancia térmica media lineal en puentes térmicos (W/m K)', 0. , 2.1 , 0.8 )
+    PUENTE_trans = st.sidebar.slider('Transmitancia térmica media lineal en puentes térmicos (W/mK)', 0. , 2.1 , 0.8 )
     # selectbox
     InstCAL_Tipo = st.sidebar.selectbox('Tipo de instalación para calefacción', 
                    ("Sin definir", "Efecto Joule", "Caldera Estándar", 
@@ -58,7 +65,7 @@ def user_input_features():
     data = {'NORMATIVA_CONSTRUCCIO': NORMATIVA_CONSTRUCCIO,
             'SUPERFICI_HAB': SUPERFICI_HAB,
             'COMPACITAT': COMPACITAT,
-            'VENTILACIO_USO_RESIDENCIAL': VENTILACIO_USO_RESIDENCIAL,
+            #'VENTILACIO_USO_RESIDENCIAL': VENTILACIO_USO_RESIDENCIAL,
             'VENTILACIO_INFILTRACIONS': VENTILACIO_INFILTRACIONS,
             'DEMANDA_ACS': DEMANDA_ACS,
             'OPACOS_Fach_sum': OPACOS_Fach_sum,
@@ -79,23 +86,15 @@ def user_input_features():
 df = user_input_features()
 
 st.subheader('Parámetros de entrada')
-st.write(df.set_index([[0]]).T)
+if st.checkbox('Parámetros de entrada'):
+    st.write(df.set_index([[0]]).T)
 
-# load model
-import os
-folder = os.path.dirname(os.path.abspath(__file__))
-name_model = os.path.join(folder, 'model')
-load_final_model = load_model(name_model)
-
-# Apply model to make predictions
-new_prediction = predict_model(load_final_model, data=df.iloc[[-1]])
-predict = (new_prediction['Label'].values[[-1]])
+new_prediction = predict_model(final_model, data=df.iloc[[-1]])
+predict = (new_prediction.iloc[0]['Label'])
 predict = np.round_(np.exp(predict),decimals=1)
 
 st.subheader('Predicción del Consumo de energía no renovable')
-st.write('Consumo de Energía ESTIMADO: **{}** kWh/m²año'.format(predict))
-
-# Para imprimir el gráfico de las escalas
+st.write('Consumo de Energía ESTIMADO:  **{:.1f}**  kWh/m²año'.format(predict))
 
 def plot_escala_letras(results, category_names, line_value):
     """
@@ -140,8 +139,60 @@ def plot_escala_letras(results, category_names, line_value):
 
 category_names = ['A', 'B', 'C', 'D', 'E', 'F', 'G']
 results = { 'Zona C2': [23.4, 14.6, 20.8, 31.7, 94.0, 24.0, 291.5] }
-line_value = predict
+#line_value = predict
 
-plot_escala_letras(results, category_names, line_value)
+plot_escala_letras(results, category_names, predict)
 
-# fin gráfico escalas
+st.subheader('Mejora de la envolvente')
+
+df_fig = pd.DataFrame(df.iloc[[-1]])
+
+rangos_transm = np.arange(.2,3.3,.02)
+for i in range( 1,  len(rangos_transm)  ):
+    df_fig.loc[i]  = df_fig.values[0]
+df_fig['OPACOS_Fach_trans'] = rangos_transm
+df_fig = pd.concat([df_fig, df_fig, df_fig], axis=0).reset_index(drop=True)
+df_fig['NORMATIVA_CONSTRUCCIO'] = ["Ant_NBECT79"] * len(rangos_transm) + ["NBECT79"] * len(rangos_transm) + ["CTE2006"] * len(rangos_transm)
+
+predict_transm = predict_model(final_model, data=df_fig)
+predict_transm["Label"] = np.round_(np.exp(predict_transm["Label"]),decimals=1)
+
+import plotly.express as px
+fig_transm = px.line(predict_transm, x ='OPACOS_Fach_trans', y='Label', color='NORMATIVA_CONSTRUCCIO', #title='Título',
+              labels={"OPACOS_Fach_trans": "Transmitancia térmica media en fachadas (W/m²K)", 
+                      "Label": "Consumo de energía estimado<br>(kWh/m²año)",
+                      "NORMATIVA_CONSTRUCCIO": "Normativa de construcción"  })
+fig_transm.update_xaxes(range=[0., 3.4]) # ampliamos el ancho del eje x
+fig_transm.add_shape( # add a vertical line
+    type="line", line_color="black", line_width=2, opacity=1, line_dash="dash",
+    x0=df.iloc[0]['OPACOS_Fach_trans'], x1=df.iloc[0]['OPACOS_Fach_trans'], xref="x", y0=0, y1=1, yref="paper"
+    )
+
+if df.iloc[0]['NORMATIVA_CONSTRUCCIO'] == 'CTE2006':
+    fig_transm.add_shape( # añadir rango CTE
+        type="rect", x0=0.60, x1=0.86, xref="x", y0=0, y1=1, yref="paper",
+        line_width=0, fillcolor=px.colors.qualitative.Plotly[2], opacity=0.2 )
+    fig_transm.add_annotation(text="Transmitancias U <br>habituales para <br>CTE2016",
+                      xref="x", yref="paper",
+                      x=0.73, y=1, showarrow=False)
+if df.iloc[0]['NORMATIVA_CONSTRUCCIO'] == 'NBECT79':
+    fig_transm.add_shape( # añadir rango CT79
+        type="rect", x0=0.66, x1=1.80, xref="x", y0=0, y1=1, yref="paper",
+        line_width=0, fillcolor=px.colors.qualitative.Plotly[1], opacity=0.2 )
+    fig_transm.add_annotation(text="Transmitancias U <br>habituales para <br>NBECT79",
+                      xref="x", yref="paper",
+                      x=1.23, y=1, showarrow=False)
+if df.iloc[0]['NORMATIVA_CONSTRUCCIO'] == 'Ant_NBECT79':
+    fig_transm.add_shape( # añadir rango ant_CT79
+        type="rect", x0=1.69, x1=2.38, xref="x", y0=0, y1=1, yref="paper",
+        line_width=0, fillcolor=px.colors.qualitative.Plotly[0], opacity=0.2 )
+    fig_transm.add_annotation(text="Transmitancias U <br>habituales para <br>Ant_NBECT79",
+                      xref="x", yref="paper",
+                      x=2.04, y=1, showarrow=False)
+
+with st.beta_expander("Información:", expanded=True):
+    st.write("La siguiente tabla muestra una comparativa de la relación existente entre la transmitancia de la fachada y la normativa de diseño. En el eje horizontal se representa la transmitancia térmica media en fachadas (en W/m²K), en el eje vertical el consumo de energía estimado (en kWh/m²año), y en colores de detallan las estimaciones según las tres normas de diseño existentes. \n\nEl resto de parámetros utilizados se mantienen constantes (céteris páribus), estando definidos por el usuario en el panel lateral izquierdo (Parámetros de entrada). Independientemente de la norma utilizada como parámetro de entrada, el gráfico muestra el efecto de las tres normas en el consumo de energía. Al cambiar la norma de aplicación en el panel lateral, se mostrará en la figura una franja de valores habituales de transmitancias en fachadas según la norma correspondiente.")
+    st.info("Al disminuir la transmitancia térmica del cerramiento también disminuye el consumo de energía, pero este descenso no es lineal. \n\nPuede modificar el parámetro de 'Transmitancia térmica media en fachadas' del panel lateral izquierdo para cuantificar el ahorro de energía en una mejora térmica de la envolvente de fachada.")
+
+st.plotly_chart(fig_transm)
+
