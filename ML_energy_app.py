@@ -33,7 +33,7 @@ with st.beta_expander("Información:", expanded=True):
     '\n\n**Datos:** Se utilizan más de 300.000 datos de certificados energéticos de viviendas individuales de la provincia de Barcelona (ubicados en zona climática C2), procedentes del [Instituto Catalán de Energía](http://icaen.gencat.cat/es/inici/).'
     '\n\n**Precisión:** El modelo de conjunto se ha probado en un set de datos de entrenamiento obteniéndose un R2 de 0.888, y en el set de prueba un R2 de 0.732. Para datos nuevos no utilizados en el modelo se ha obtenido un R2 de 0.790, lo que indica que el modelo generaliza correctamente. ')
 
-st.sidebar.image('logo.png')
+st.sidebar.image('logo2.png')
 st.sidebar.header('Parámetros de entrada')
 
 def user_input_features():
