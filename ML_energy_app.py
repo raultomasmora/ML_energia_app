@@ -105,7 +105,7 @@ with st.beta_expander("Parámetros de entrada:", expanded=False):
             '\n\n- Transmitancia térmica media lineal en puentes térmicos (W/mK). *Valor medio de la transmitancia térmica de los puentes térmicos que forman parte de la envolvente térmica (en W/mK).*'
             '\n\n- Tipo de instalación para calefacción. *Se definen 6 posibles casos de instalaciones de calefacción: Sin definir, Efecto Joule, Caldera Estándar, Bomba de calor, Caldera de condensación, y Otros sistemas.*'
             '\n\n- Tipo de instalación para refrigeración. *Se definen 4 posibles casos de instalaciones de calefacción: Sin definir, Maquina frigorífica, Bomba de calor, y Otros sistemas.*'
-            '\n\n- Reducc_EPNoR (kWh/m²∙año). *Producción energía renovable, el valor corresponde a la cantidad de energía primaria no renovable (en kWh/m²∙año).*'
+            '\n\n- Reducc_EPNoR (kWh/m²∙año). *Producción energía renovable (en kWh/m²∙año).*'
             )
 
 new_prediction = predict_model(final_model, data=df.iloc[[-1]])
