@@ -88,8 +88,8 @@ with st.beta_expander("Parámetros de entrada:", expanded=False):
     if st.checkbox('Visualizar los parámetros de entrada'):
         st.write(df.set_index([[0]]).T)
     st.info('\n\nEsta es una descripción de los parámetros'
-            '\n\n- *param1*. descripción.'
-            '\n\n- *param2*. descripción.')
+            '- *param1*. descripción.'
+            '- *param2*. descripción.')
 
 new_prediction = predict_model(final_model, data=df.iloc[[-1]])
 predict = (new_prediction.iloc[0]['Label'])
