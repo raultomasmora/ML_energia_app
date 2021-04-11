@@ -39,7 +39,7 @@ st.sidebar.header('Parámetros de entrada')
 def user_input_features():
     NORMATIVA_CONSTRUCCIO = st.sidebar.selectbox('Normativa de construcción', 
                             ("Ant_NBECT79", "NBECT79", "CTE2006"))
-    SUPERFICI_HAB = st.sidebar.slider('Superficie habitable (m²) :speech_balloon:', 20. , 250. , 70. )
+    SUPERFICI_HAB = st.sidebar.slider('Superficie habitable (m²)'+st.write(':speech_balloon:'), 20. , 250. , 70. )
     COMPACITAT = st.sidebar.slider('Compacidad (m³/m²)', 0.5 , 18. , 3.4 )
     VENTILACIO_USO_RESIDENCIAL = st.sidebar.slider('Ventilación uso residencial (renovaciones/hora)', 0.3 , 1. , 0.65 )
     VENTILACIO_INFILTRACIONS = st.sidebar.slider('Ventilación por infiltraciones (renovaciones/hora)', 0.4 , 1.3 , 0.63 )
