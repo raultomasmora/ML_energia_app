@@ -24,7 +24,7 @@ try:
 except: 
     print("Se necesita un modelo entrenado")
 
-st.title('Energy Certification with Machine Learning')
+st.title('Certificación energética con Machine Learning')
 st.error('Entorno web en pruebas... (actualización 2021-04-11)')
 with st.beta_expander("Información:", expanded=True):
     st.success('El proyecto ha sido elaborado por el investigador [Raúl Mora-García](https://publons.com/researcher/1717710/raul-tomas-mora-garcia/) rtmg@ua.es en colaboración con [Grupo Valero](https://www.grupovalero.com/) durante el año 2020. Subvención AEST/2019/005 del Programa para la promoción de la investigación científica, el desarrollo tecnológico y la innovación en la Comunitat Valenciana (Anexo VII) [DOGV nº8355](http://www.dogv.gva.es/datos/2018/08/06/pdf/2018_7758.pdf).')
