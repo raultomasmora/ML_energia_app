@@ -5,7 +5,7 @@ Esta aplicación predice el consumo de energía (kWh/m²) a partir de miles de d
 En el **[siguiente enlace](https://share.streamlit.io/raultomasmora/ml_energia_app/main/ML_energy_app.py)** se puede ver la implementación web del proyecto en [Streamlit](https://streamlit.io/).
 
 ## Sobre el proyecto
-Proyecto elaborado por rtmg@ua.es en colaboración con [Grupo Valero](https://www.grupovalero.com/) durante el año 2020. Subvención AEST/2019/005 del Programa para la promoción de la investigación científica, el desarrollo tecnológico y la innovación en la Comunitat Valenciana (Anexo VII) [DOGV nº8355](http://www.dogv.gva.es/datos/2018/08/06/pdf/2018_7758.pdf).
+El proyecto ha sido elaborado por el investigador [Raúl Mora-García](https://cvnet.cpd.ua.es/curriculum-breve/es/mora-garcia-raul-tomas/7187) rtmg@ua.es en colaboración con [Grupo Valero](https://www.grupovalero.com/) durante el año 2020. Subvención AEST/2019/005 del Programa para la promoción de la investigación científica, el desarrollo tecnológico y la innovación en la Comunitat Valenciana (Anexo VII) [DOGV nº8355](http://www.dogv.gva.es/datos/2018/08/06/pdf/2018_7758.pdf).
 
 ## Descripción del proyecto
 Esta aplicación predice el consumo de energía (kWh/m²año) a partir de miles de datos de certificados energéticos elaborados con el programa [CE3X](https://www.efinova.es/CE3X). Después se evalúa la posible reducción del consumo de energía al mejorar el aislamiento de la envolvente.
