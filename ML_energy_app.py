@@ -25,7 +25,7 @@ except:
     print("Se necesita un modelo entrenado")
 
 st.title('Energy Certification with Machine Learning')
-st.error('en pruebas...')
+st.error('Entorno web en pruebas... (actualización 2021-04-11)')
 with st.beta_expander("Información:", expanded=True):
     st.success('Proyecto elaborado por [rtmg@ua.es](https://cvnet.cpd.ua.es/curriculum-breve/es/mora-garcia-raul-tomas/7187) en colaboración con [Grupo Valero](https://www.grupovalero.com/) durante el año 2020. Subvención AEST/2019/005 del Programa para la promoción de la investigación científica, el desarrollo tecnológico y la innovación en la Comunitat Valenciana (Anexo VII) [DOGV nº8355](http://www.dogv.gva.es/datos/2018/08/06/pdf/2018_7758.pdf).')
     st.info('\n\nEsta aplicación predice el consumo de energía (kWh/m²año) a partir de miles de datos de certificados energéticos elaborados con el programa **[CE3X](https://www.efinova.es/CE3X)**. Después se evalúa la posible reducción del consumo de energía al mejorar el aislamiento de la envolvente.'
@@ -58,7 +58,7 @@ def user_input_features():
                     "Bomba de calor", "Caldera Condensación", "Otros sistemas") )
     InstREF_Tipo = st.sidebar.selectbox('Tipo de instalación para refrigeración', 
                    ("Sin definir", "Maquina frigorífica", "Bomba de calor", "Otros sistemas") ) 
-    Reducc_EPNoR = st.sidebar.slider('Reducc_EPNoR', 0. , 352.8 , 0. )
+    Reducc_EPNoR = st.sidebar.slider('Reducc_EPNoR (kWh/m²∙año)', 0. , 352.8 , 0. )
 
     data = {'NORMATIVA_CONSTRUCCIO': NORMATIVA_CONSTRUCCIO,
             'SUPERFICI_HAB': SUPERFICI_HAB,
@@ -83,9 +83,13 @@ def user_input_features():
 
 df = user_input_features()
 
-st.subheader('Parámetros de entrada')
-if st.checkbox('Parámetros de entrada'):
-    st.write(df.set_index([[0]]).T)
+#st.subheader('Parámetros de entrada')
+with st.beta_expander("Parámetros de entrada:", expanded=False):
+    if st.checkbox('Parámetros de entrada'):
+        st.write(df.set_index([[0]]).T)
+    st.info('\n\nEsta es una descripción de los parámetros'
+            '\n\n- *param1*. descripción.'
+            '\n\n- *param2*. descripción.')
 
 new_prediction = predict_model(final_model, data=df.iloc[[-1]])
 predict = (new_prediction.iloc[0]['Label'])
