@@ -45,14 +45,14 @@ def user_input_features():
     VENTILACIO_INFILTRACIONS = st.sidebar.slider('Ventilación por infiltraciones (renovaciones/hora)', 0.4 , 1.3 , 0.63 )
     DEMANDA_ACS = st.sidebar.slider('Demanda de ACS (litros/día)', 0. , 1122. , 71.5 )
     OPACOS_Fach_sum = st.sidebar.slider('Suma de superficies en fachada (m²)', 7. , 250. , 45. )
-    OPACOS_Fach_trans = st.sidebar.slider('Transmitancia térmica media en fachadas (W/m²K)', 0.2 , 3.2 , 1.7 )
+    OPACOS_Fach_trans = st.sidebar.slider('Transmitancia térmica media en fachadas (W/m²∙K)', 0.2 , 3.2 , 1.7 )
     OPACOS_Cubi_sum = st.sidebar.slider('Suma de superficies en cubierta (m²)', 0. , 1224.3 , 11.7 )
-    OPACOS_Cubi_trans = st.sidebar.slider('Transmitancia térmica media en cubiertas (W/m²K)', 0. , 5.7 , 0.4 )
+    OPACOS_Cubi_trans = st.sidebar.slider('Transmitancia térmica media en cubiertas (W/m²∙K)', 0. , 5.7 , 0.4 )
     HUECOS_sum = st.sidebar.slider('Suma de superficies en huecos (m²)', 1. , 157.9 , 11.8 )
-    HUECOS_trans = st.sidebar.slider('Transmitancia térmica media en huecos (W/m²K)', 0.6 , 7. , 4.4 )
+    HUECOS_trans = st.sidebar.slider('Transmitancia térmica media en huecos (W/m²∙K)', 0.6 , 7. , 4.4 )
     HUECOS_fsol = st.sidebar.slider('Factor solar promedio en huecos (g)', 0. , 1. , 0.5 )
     PUENTE_sum = st.sidebar.slider('Suma de longitudes con puentes térmicos (metros)', 0. , 1100.5 , 70.2 )
-    PUENTE_trans = st.sidebar.slider('Transmitancia térmica media lineal en puentes térmicos (W/mK)', 0. , 2.1 , 0.8 )
+    PUENTE_trans = st.sidebar.slider('Transmitancia térmica media lineal en puentes térmicos (W/m∙K)', 0. , 2.1 , 0.8 )
     InstCAL_Tipo = st.sidebar.selectbox('Tipo de instalación para calefacción', 
                    ("Sin definir", "Efecto Joule", "Caldera Estándar", 
                     "Bomba de calor", "Caldera Condensación", "Otros sistemas") )
