@@ -88,8 +88,25 @@ with st.beta_expander("Parámetros de entrada:", expanded=False):
     if st.checkbox('Visualizar los parámetros de entrada'):
         st.write(df.set_index([[0]]).T)
     st.info('\n\nEsta es una descripción de los parámetros'
-            '- *param1*. descripción.'
-            '- *param2*. descripción.')
+            '\n\n- Normativa de construcción. *Se definen tres periodos normativos según el año de construcción: Anterior a la norma NBE-CT79, conforme a la norma NBE-CT79 o conforme a la norma CTE2016.*'
+            '\n\n- Superficie habitable (m²). *Superficie útil de la vivienda (en m²).*'
+            '\n\n- Compacidad (m³/m²). *Compacidad calculada conforme al CTE (volumen/área de la envolvente).*'
+            '\n\n- Ventilación uso residencial (renovaciones/hora). *Renovaciones hora de aire exterior para uso residencial establecido en el CTE (en renovaciones/hora).*'
+            '\n\n- Ventilación por infiltraciones (renovaciones/hora). *Renovaciones hora de aire exterior debido a infiltraciones por la carpintería (en renovaciones/hora).*'
+            '\n\n- Demanda de ACS (litros/día). *Demanda de agua caliente sanitaria conforme al CTE (en litros/día).*'
+            '\n\n- Suma de superficies en fachada (m²). *Total de las superficies de fachada en contacto con el exterior y que forman parte de la envolvente térmica (en m²).*'
+            '\n\n- Transmitancia térmica media en fachadas (W/m²K). *Valor medio de la transmitancia térmica de los cerramientos que forman parte de la envolvente térmica (en W/m²K).*'
+            '\n\n- Suma de superficies en cubierta (m²). *Total de las superficies de cubierta en contacto con el exterior y que forman parte de la envolvente térmica (en m²).*'
+            '\n\n- Transmitancia térmica media en cubiertas (W/m²K). *Valor medio de la transmitancia térmica de las superficies de cubierta que forman parte de la envolvente térmica (en W/m²K).*'
+            '\n\n- Suma de superficies en huecos (m²). *Total de las superficies de los huecos en contacto con el exterior y que forman parte de la envolvente térmica (en m²).*'
+            '\n\n- Transmitancia térmica media en huecos (W/m²K). *Valor medio de la transmitancia térmica de las superficies de los huecos que forman parte de la envolvente térmica (en W/m²K).*'
+            '\n\n- Factor solar promedio en huecos (g). *Valor medio del factor solar de las superficies acristaladas que forman parte de la envolvente térmica (g es un valor adimensional entre 0 y 1).*'
+            '\n\n- Suma de longitudes con puentes térmicos (metros). *Total de las longitudes de los puentes térmicos en contacto con el exterior y que forman parte de la envolvente térmica (en metros).*'
+            '\n\n- Transmitancia térmica media lineal en puentes térmicos (W/mK). *Valor medio de la transmitancia térmica de los puentes térmicos que forman parte de la envolvente térmica (en W/mK).*'
+            '\n\n- Tipo de instalación para calefacción. *Se definen 6 posibles casos de instalaciones de calefacción: Sin definir, Efecto Joule, Caldera Estándar, Bomba de calor, Caldera de condensación, y Otros sistemas.*'
+            '\n\n- Tipo de instalación para refrigeración. *Se definen 4 posibles casos de instalaciones de calefacción: Sin definir, Maquina frigorífica, Bomba de calor, y Otros sistemas.*'
+            '\n\n- Reducc_EPNoR (kWh/m²∙año). *Producción energía renovable, el valor corresponde a la cantidad de energía primaria no renovable (en kWh/m²∙año).*'
+            )
 
 new_prediction = predict_model(final_model, data=df.iloc[[-1]])
 predict = (new_prediction.iloc[0]['Label'])
