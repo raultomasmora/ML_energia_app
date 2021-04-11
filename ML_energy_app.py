@@ -85,7 +85,7 @@ df = user_input_features()
 
 #st.subheader('Parámetros de entrada')
 with st.beta_expander("Parámetros de entrada:", expanded=False):
-    if st.checkbox('Parámetros de entrada'):
+    if st.checkbox('Visualizar los parámetros de entrada'):
         st.write(df.set_index([[0]]).T)
     st.info('\n\nEsta es una descripción de los parámetros'
             '\n\n- *param1*. descripción.'
