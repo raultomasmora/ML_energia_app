@@ -72,4 +72,4 @@ Descripción de los parámetros utilizados en el modelo:
 
 
 ## Screenshots
-![app](images/app_energia_v03.jpg)
+![app](images/app_energia_v02.jpg)
