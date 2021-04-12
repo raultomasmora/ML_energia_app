@@ -26,8 +26,8 @@ try:
 except: 
     print("Se necesita un modelo entrenado")
 
-st.title('Certificación energética con Machine Learning'
-         '\n\n ')
+st.title('Certificación energética con Machine Learning')
+st.title('\n\n')
 st.error('Entorno web en pruebas... (actualización 2021-04-11)')
 with st.beta_expander("Información:", expanded=True):
     st.success('El proyecto ha sido elaborado por el investigador [Raúl Mora-García](https://publons.com/researcher/1717710/raul-tomas-mora-garcia/) [:email:](mailto:rtmg@ua.es) en colaboración con [Grupo Valero](https://www.grupovalero.com/) durante el año 2020. Subvención AEST/2019/005 del Programa para la promoción de la investigación científica, el desarrollo tecnológico y la innovación en la Comunitat Valenciana (Anexo VII) [DOGV nº8355](http://www.dogv.gva.es/datos/2018/08/06/pdf/2018_7758.pdf).')
@@ -47,21 +47,21 @@ def user_input_features():
     COMPACITAT = st.sidebar.slider('Compacidad (m³/m²)', 0.5 , 18. , 3.4 , 
                                    help=('Compacidad calculada conforme al CTE'  '\n\n (volumen/área de la envolvente)'))
     VENTILACIO_USO_RESIDENCIAL = st.sidebar.slider('Ventilación uso residencial (renovaciones/hora)', 0.3 , 1. , 0.65 ,
-                                                  help=('texto1'  '\n\n texto2'))
+                                                  help=('Renovaciones hora de aire exterior para'  '\n\n uso residencial establecido en el CTE'))
     VENTILACIO_INFILTRACIONS = st.sidebar.slider('Ventilación por infiltraciones (renovaciones/hora)', 0.4 , 1.3 , 0.63 ,
-                                                help=('texto1'  '\n\n texto2'))
+                                                help=('Renovaciones hora de aire exterior'  '\n\n debido a infiltraciones'))
     DEMANDA_ACS = st.sidebar.slider('Demanda de ACS (litros/día)', 0. , 1122. , 71.5 ,
-                                   help=('texto1'  '\n\n texto2'))
+                                   help=('Demanda de agua caliente sanitaria'  '\n\n conforme al CTE'))
     OPACOS_Fach_sum = st.sidebar.slider('Suma de superficies en fachada (m²)', 7. , 250. , 45. ,
-                                       help=('texto1'  '\n\n texto2'))
+                                       help=('Total de las superficies de fachada'  '\n\n en contacto con el exterior'))
     OPACOS_Fach_trans = st.sidebar.slider('Transmitancia térmica media en fachadas (W/m²∙K)', 0.2 , 3.2 , 1.7 ,
                                          help=('Valor medio de la transmitancia térmica'  '\n\n de los cerramientos opacos'))
     OPACOS_Cubi_sum = st.sidebar.slider('Suma de superficies en cubierta (m²)', 0. , 1224.3 , 11.7 ,
-                                       help=('texto1'  '\n\n texto2'))
+                                       help=('Total de las superficies de cubierta'  '\n\n en contacto con el exterior'))
     OPACOS_Cubi_trans = st.sidebar.slider('Transmitancia térmica media en cubiertas (W/m²∙K)', 0. , 5.7 , 0.4 ,
                                          help=('Valor medio de la transmitancia térmica'  '\n\n de las superficies de cubierta'))
     HUECOS_sum = st.sidebar.slider('Suma de superficies en huecos (m²)', 1. , 157.9 , 11.8 ,
-                                  help=('texto1'  '\n\n texto2'))
+                                  help=('Total de las superficies de los huecos'  '\n\n en contacto con el exterior '))
     HUECOS_trans = st.sidebar.slider('Transmitancia térmica media en huecos (W/m²∙K)', 0.6 , 7. , 4.4 ,
                                     help=('Valor medio de la transmitancia térmica'  '\n\n de las superficies de los huecos'))
     HUECOS_fsol = st.sidebar.slider('Factor solar promedio en huecos (g)', 0. , 1. , 0.5 ,
