@@ -41,6 +41,30 @@ Descripción de los parámetros utilizados en el modelo:
 - Tipo de instalación para refrigeración. *Se definen 4 posibles casos de instalaciones de calefacción: Sin definir, Maquina frigorífica, Bomba de calor, y Otros sistemas.*
 - Reducc_EPNoR (kWh/m²∙año). *Producción de energía renovable (en kWh/m²∙año).*
 
+## Historia
+**En proyecto**
+- Incluir nuevos datos descriptivos de los resultados (gráficos y mapas).
+- Incluir información ampliada sobre el modelo ML.
+- Mejorar el poder predictivo del modelo ML.
+
+**v.0.3**
+- Se actualiza a la versión 0.80 de Streamlit.
+- El gráfico de consumo de energía se hace interactivo con plotly.express.
+- Se implementan ventanas descriptivas de cada parámetro del modelo en la barra lateral.
+- Se amplía la descripción de los parámetros del modelo.
+- Se actualiza la información descriptiva en GitHub.
+- Se corrigen errores menores descriptivos y de visualización.
+
+**v.0.2**
+- Se implementa un gráfico del consumo de energía en función de la normativa.
+- Se implementa una escala gráfica con la calificación según la zona climática.
+- Se actualiza el logo del proyecto.
+
+**v.0.1**
+- Se crea el modelo ML en Python 3.7 y se implementa en Streamlit 0.71.0.
+- Se utiliza un *enseble learning* que combina tres algoritmos de aprendizaje (*catboost*, *lightgbm* y *gbr*).
+- La aplicación web carga el modelo, captura los datos de entrada y hace predicciones.
+
 
 ## Screenshots
 ![app](images/app_energia1.jpg)
