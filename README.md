@@ -4,6 +4,8 @@ Esta aplicación predice el consumo de energía (kWh/m²) a partir de miles de d
 
 En el **[siguiente enlace](https://share.streamlit.io/raultomasmora/ml_energia_app/main/ML_energy_app.py)** se puede ver la implementación web del proyecto en [Streamlit](https://streamlit.io/).
 
+[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://share.streamlit.io/raultomasmora/ml_energia_app/main/ML_energy_app.py)
+
 ## Sobre el proyecto
 El proyecto ha sido elaborado por el investigador [Raúl Mora-García](https://publons.com/researcher/1717710/raul-tomas-mora-garcia/publications/) rtmg@ua.es en colaboración con [Grupo Valero](https://www.grupovalero.com/) durante el año 2020. Subvención AEST/2019/005 del Programa para la promoción de la investigación científica, el desarrollo tecnológico y la innovación en la Comunitat Valenciana (Anexo VII) [DOGV nº8355](http://www.dogv.gva.es/datos/2018/08/06/pdf/2018_7758.pdf).
 
