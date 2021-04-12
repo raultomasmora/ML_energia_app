@@ -41,12 +41,12 @@ st.sidebar.header('Parámetros de entrada')
 
 def user_input_features():
     NORMATIVA_CONSTRUCCIO = st.sidebar.selectbox('Normativa de construcción', ("Ant_NBECT79", "NBECT79", "CTE2006"), 
-                                                help=('Se definen tres periodos normativos según el año de construcción'))
+                                                help=('Se definen tres periodos normativos'
+                                                      '\n\n según el año de construcción'))
     SUPERFICI_HAB = st.sidebar.slider('Superficie habitable (m²)', 20. , 250. , 70. , 
                                       help=('Superficie útil de la vivienda'))
     COMPACITAT = st.sidebar.slider('Compacidad (m³/m²)', 0.5 , 18. , 3.4 , 
-                                   help=('Compacidad calculada conforme al CTE'
-                                        '\n\n (volumen/área de la envolvente)'))
+                                   help=('Compacidad calculada conforme al CTE'  '\n\n (volumen/área de la envolvente)'))
     VENTILACIO_USO_RESIDENCIAL = st.sidebar.slider('Ventilación uso residencial (renovaciones/hora)', 0.3 , 1. , 0.65 )
     VENTILACIO_INFILTRACIONS = st.sidebar.slider('Ventilación por infiltraciones (renovaciones/hora)', 0.4 , 1.3 , 0.63 )
     DEMANDA_ACS = st.sidebar.slider('Demanda de ACS (litros/día)', 0. , 1122. , 71.5 )
