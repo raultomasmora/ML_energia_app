@@ -9,12 +9,14 @@ import matplotlib.pyplot as plt
 import os
 
 # entorno streamlit
+'''
 hide_st_style = """
     <style>
         #MainMenu {visibility: hidden;}
         footer {visibility: hidden;}
     </style>
 """
+'''
 st.markdown(hide_st_style, unsafe_allow_html=True)
 CURRENT_THEME = "light"
 IS_DARK_THEME = False
