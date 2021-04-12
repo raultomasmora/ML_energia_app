@@ -38,7 +38,7 @@ Descripción de los parámetros utilizados en el modelo:
 - Tipo de instalación para calefacción. *Se definen 6 posibles casos de instalaciones de calefacción: Sin definir, Efecto Joule, Caldera Estándar, Bomba de calor, Caldera de condensación, y Otros sistemas.*
 - Tipo de instalación para refrigeración. *Se definen 4 posibles casos de instalaciones de calefacción: Sin definir, Maquina frigorífica, Bomba de calor, y Otros sistemas.*
 - Reducc_EPNoR (kWh/m²∙año). *Producción de energía renovable (en kWh/m²∙año).*
-
+- <span color="red">redtext</span>
 
 ## Screenshots
 ![app](images/app_energia1.jpg)
