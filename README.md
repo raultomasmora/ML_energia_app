@@ -48,7 +48,7 @@ Descripción de los parámetros utilizados en el modelo:
 - Mejorar el poder predictivo del modelo ML.
 
 **v.0.3**
-- Se actualiza a la versión 0.80 de Streamlit.
+- Se actualiza a la versión 0.80 de `Streamlit`.
 - El gráfico de consumo de energía se hace interactivo con plotly.express.
 - Se implementan ventanas descriptivas de cada parámetro del modelo en la barra lateral.
 - Se amplía la descripción de los parámetros del modelo.
