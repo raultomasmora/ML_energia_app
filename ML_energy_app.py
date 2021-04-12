@@ -17,6 +17,7 @@ hide_st_style = """
 """
 st.markdown(hide_st_style, unsafe_allow_html=True)
 
+@st.cache
 try:
     folder = os.path.dirname(os.path.abspath(__file__))
     name_model = os.path.join(folder, 'model')
@@ -87,7 +88,7 @@ df = user_input_features()
 with st.beta_expander("Parámetros de entrada:", expanded=False):
     if st.checkbox('Visualizar los parámetros de entrada'):
         st.write(df.set_index([[0]]).T)
-    st.info('\n\nEsta es una descripción de los parámetros'
+    st.info('\n\nDescripción de los parámetros utilizados en el modelo:'
             '\n\n- Normativa de construcción. *Se definen tres periodos normativos según el año de construcción: Anterior a la norma NBE-CT79, conforme a la norma NBE-CT79 o conforme a la norma CTE2016.*'
             '\n\n- Superficie habitable (m²). *Superficie útil de la vivienda (en m²).*'
             '\n\n- Compacidad (m³/m²). *Compacidad calculada conforme al CTE (volumen/área de la envolvente).*'
@@ -105,7 +106,7 @@ with st.beta_expander("Parámetros de entrada:", expanded=False):
             '\n\n- Transmitancia térmica media lineal en puentes térmicos (W/mK). *Valor medio de la transmitancia térmica de los puentes térmicos que forman parte de la envolvente térmica (en W/mK).*'
             '\n\n- Tipo de instalación para calefacción. *Se definen 6 posibles casos de instalaciones de calefacción: Sin definir, Efecto Joule, Caldera Estándar, Bomba de calor, Caldera de condensación, y Otros sistemas.*'
             '\n\n- Tipo de instalación para refrigeración. *Se definen 4 posibles casos de instalaciones de calefacción: Sin definir, Maquina frigorífica, Bomba de calor, y Otros sistemas.*'
-            '\n\n- Reducc_EPNoR (kWh/m²∙año). *Producción energía renovable (en kWh/m²∙año).*'
+            '\n\n- Reducc_EPNoR (kWh/m²∙año). *Producción de energía renovable (en kWh/m²∙año).*'
             )
 
 new_prediction = predict_model(final_model, data=df.iloc[[-1]])
