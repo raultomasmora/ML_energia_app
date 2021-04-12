@@ -41,7 +41,7 @@ def user_input_features():
                             ("Ant_NBECT79", "NBECT79", "CTE2006"))
     SUPERFICI_HAB = st.sidebar.slider('Superficie habitable (m²)', 20. , 250. , 70. , 
                                       help="""Hola mundo
-                                      \n esto es una prueba, no se lo largo que puede entrar el texto en esta caja""")
+                                      esto es una prueba, no se lo largo que puede entrar el texto en esta caja""")
     COMPACITAT = st.sidebar.slider('Compacidad (m³/m²)', 0.5 , 18. , 3.4 )
     VENTILACIO_USO_RESIDENCIAL = st.sidebar.slider('Ventilación uso residencial (renovaciones/hora)', 0.3 , 1. , 0.65 )
     VENTILACIO_INFILTRACIONS = st.sidebar.slider('Ventilación por infiltraciones (renovaciones/hora)', 0.4 , 1.3 , 0.63 )
