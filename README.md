@@ -52,7 +52,7 @@ Descripción de los parámetros utilizados en el modelo:
 - Mejorar el poder predictivo del modelo ML.
 
 **v.0.3**
-- Se actualiza a la versión `Streamlit 0.80.0`.
+- Se actualiza a la versión `streamlit 0.80.0`.
 - El gráfico de consumo de energía se hace interactivo con `plotly.express`.
 - Se implementan ventanas descriptivas de cada parámetro del modelo en la barra lateral.
 - Se amplía la descripción de los parámetros del modelo.
@@ -65,10 +65,11 @@ Descripción de los parámetros utilizados en el modelo:
 - Se actualiza el logo del proyecto.
 
 **v.0.1**
-- Se crea el modelo ML en `Python 3.7` y se implementa en `Streamlit 0.71.0`.
+- Se crea el modelo ML en `python 3.7` con `pycaret 2.2.1` y se implementa en `streamlit 0.71.0`.
 - Se utiliza un *enseble learning* que combina tres algoritmos de aprendizaje (*catboost*, *lightgbm* y *gbr*).
+- Se despliega el proyecto en `GitHub`.
 - La aplicación web carga el modelo, captura los datos de entrada y hace predicciones.
 
 
 ## Screenshots
-![app](images/app_energia1.jpg)
+![app](images/app_energia_v03.jpg)
