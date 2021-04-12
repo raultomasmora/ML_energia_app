@@ -1,4 +1,4 @@
-![app](logo.png){:height="36px" width="36px"}
+<img src="logo.png" width="32" height="32">
 # ML_energia_app
 
 Esta aplicación predice el consumo de energía (kWh/m²) a partir de miles de datos de certificados energéticos elaborados con el programa CE3X.
