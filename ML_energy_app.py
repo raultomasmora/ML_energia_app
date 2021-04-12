@@ -48,8 +48,8 @@ def user_input_features():
                                             that I split up
                                             for readability""".replace('\n',' '))
     COMPACITAT = st.sidebar.slider('Compacidad (m³/m²)', 0.5 , 18. , 3.4 , 
-                                   help=('Hola mundo
-                                        \n esto es una prueba, no se lo largo que puede entrar el texto en esta caja'))
+                                   help=('Hola mundo'
+                                        '\n esto es una prueba, no se lo largo que puede entrar el texto en esta caja'))
     VENTILACIO_USO_RESIDENCIAL = st.sidebar.slider('Ventilación uso residencial (renovaciones/hora)', 0.3 , 1. , 0.65 )
     VENTILACIO_INFILTRACIONS = st.sidebar.slider('Ventilación por infiltraciones (renovaciones/hora)', 0.4 , 1.3 , 0.63 )
     DEMANDA_ACS = st.sidebar.slider('Demanda de ACS (litros/día)', 0. , 1122. , 71.5 )
