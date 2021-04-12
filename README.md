@@ -19,9 +19,26 @@ Esta aplicación predice el consumo de energía (kWh/m²año) a partir de miles 
 **Precisión:** El modelo de conjunto se ha probado en un conjunto de datos de entrenamiento obteniéndose un R2 de 0.888, y en el conjunto de prueba un R2 de 0.732. Para datos nuevos no utilizados en el modelo se ha obtenido un R2 de 0.790, lo que indica que el modelo generaliza correctamente.
 
 ## Parámetros necesarios en el modelo
-- *Normativa de construcción*. Se definen tres periodos normativos según el año de construcción: Anterior a la norma NBE-CT79, conforme a la norma NBE-CT79 o conforme a la norma CTE2016.
-- Superficie habitable (m²). Superficie útil de la vivienda (en m²).
-- Compacidad (m³/m²). *Compacidad conforme a CTE (volumen/área de la envolvente).*
+Descripción de los parámetros utilizados en el modelo:
+- Normativa de construcción. *Se definen tres periodos normativos según el año de construcción: Anterior a la norma NBE-CT79, conforme a la norma NBE-CT79 o conforme a la norma CTE2016.*
+- Superficie habitable (m²). *Superficie útil de la vivienda (en m²).*
+- Compacidad (m³/m²). *Compacidad calculada conforme al CTE (volumen/área de la envolvente).*
+- Ventilación uso residencial (renovaciones/hora). *Renovaciones hora de aire exterior para uso residencial establecido en el CTE (en renovaciones/hora).*
+- Ventilación por infiltraciones (renovaciones/hora). *Renovaciones hora de aire exterior debido a infiltraciones por la carpintería (en renovaciones/hora).*
+- Demanda de ACS (litros/día). *Demanda de agua caliente sanitaria conforme al CTE (en litros/día).*
+- Suma de superficies en fachada (m²). *Total de las superficies de fachada en contacto con el exterior y que forman parte de la envolvente térmica (en m²).*
+- Transmitancia térmica media en fachadas (W/m²K). *Valor medio de la transmitancia térmica de los cerramientos que forman parte de la envolvente térmica (en W/m²K).*
+- Suma de superficies en cubierta (m²). *Total de las superficies de cubierta en contacto con el exterior y que forman parte de la envolvente térmica (en m²).*
+- Transmitancia térmica media en cubiertas (W/m²K). *Valor medio de la transmitancia térmica de las superficies de cubierta que forman parte de la envolvente térmica (en W/m²K).*
+- Suma de superficies en huecos (m²). *Total de las superficies de los huecos en contacto con el exterior y que forman parte de la envolvente térmica (en m²).*
+- Transmitancia térmica media en huecos (W/m²K). *Valor medio de la transmitancia térmica de las superficies de los huecos que forman parte de la envolvente térmica (en W/m²K).*
+- Factor solar promedio en huecos (g). *Valor medio del factor solar de las superficies acristaladas que forman parte de la envolvente térmica (g es un valor adimensional entre 0 y 1).*
+- Suma de longitudes con puentes térmicos (metros). *Total de las longitudes de los puentes térmicos en contacto con el exterior y que forman parte de la envolvente térmica (en metros).*
+- Transmitancia térmica media lineal en puentes térmicos (W/mK). *Valor medio de la transmitancia térmica de los puentes térmicos que forman parte de la envolvente térmica (en W/mK).*
+- Tipo de instalación para calefacción. *Se definen 6 posibles casos de instalaciones de calefacción: Sin definir, Efecto Joule, Caldera Estándar, Bomba de calor, Caldera de condensación, y Otros sistemas.*
+- Tipo de instalación para refrigeración. *Se definen 4 posibles casos de instalaciones de calefacción: Sin definir, Maquina frigorífica, Bomba de calor, y Otros sistemas.*
+- Reducc_EPNoR (kWh/m²∙año). *Producción de energía renovable (en kWh/m²∙año).*
+
 
 ## Screenshots
 ![app](images/app_energia1.jpg)
