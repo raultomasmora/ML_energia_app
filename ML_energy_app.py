@@ -20,6 +20,7 @@ st.markdown(hide_st_style, unsafe_allow_html=True)
 try:
     folder = os.path.dirname(os.path.abspath(__file__))
     name_model = os.path.join(folder, 'model')
+    @st.cache
     final_model = load_model(name_model)
 except: 
     print("Se necesita un modelo entrenado")
