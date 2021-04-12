@@ -16,6 +16,9 @@ hide_st_style = """
     </style>
 """
 st.markdown(hide_st_style, unsafe_allow_html=True)
+CURRENT_THEME = "light"
+IS_DARK_THEME = False
+
 
 try:
     folder = os.path.dirname(os.path.abspath(__file__))
