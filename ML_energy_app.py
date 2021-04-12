@@ -26,7 +26,8 @@ try:
 except: 
     print("Se necesita un modelo entrenado")
 
-st.title('Certificación energética con Machine Learning \n')
+st.title('Certificación energética con Machine Learning'
+         '\n\n')
 st.error('Entorno web en pruebas... (actualización 2021-04-11)')
 with st.beta_expander("Información:", expanded=True):
     st.success('El proyecto ha sido elaborado por el investigador [Raúl Mora-García](https://publons.com/researcher/1717710/raul-tomas-mora-garcia/) [:email:](mailto:rtmg@ua.es) en colaboración con [Grupo Valero](https://www.grupovalero.com/) durante el año 2020. Subvención AEST/2019/005 del Programa para la promoción de la investigación científica, el desarrollo tecnológico y la innovación en la Comunitat Valenciana (Anexo VII) [DOGV nº8355](http://www.dogv.gva.es/datos/2018/08/06/pdf/2018_7758.pdf).')
@@ -49,7 +50,7 @@ def user_input_features():
                                             for readability""".replace('\n',' '))
     COMPACITAT = st.sidebar.slider('Compacidad (m³/m²)', 0.5 , 18. , 3.4 , 
                                    help=('Hola mundo'
-                                        '\n esto es una prueba, no se lo largo que puede entrar el texto en esta caja'))
+                                        '\n\n esto es una prueba, no se lo largo que puede entrar el texto en esta caja'))
     VENTILACIO_USO_RESIDENCIAL = st.sidebar.slider('Ventilación uso residencial (renovaciones/hora)', 0.3 , 1. , 0.65 )
     VENTILACIO_INFILTRACIONS = st.sidebar.slider('Ventilación por infiltraciones (renovaciones/hora)', 0.4 , 1.3 , 0.63 )
     DEMANDA_ACS = st.sidebar.slider('Demanda de ACS (litros/día)', 0. , 1122. , 71.5 )
