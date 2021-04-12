@@ -41,30 +41,44 @@ st.sidebar.header('Parámetros de entrada')
 
 def user_input_features():
     NORMATIVA_CONSTRUCCIO = st.sidebar.selectbox('Normativa de construcción', ("Ant_NBECT79", "NBECT79", "CTE2006"), 
-                                                help=('Se definen tres periodos normativos'
-                                                      '\n\n según el año de construcción'))
+                                                help=('Se definen tres periodos normativos'  '\n\n según el año de construcción'))
     SUPERFICI_HAB = st.sidebar.slider('Superficie habitable (m²)', 20. , 250. , 70. , 
                                       help=('Superficie útil de la vivienda'))
     COMPACITAT = st.sidebar.slider('Compacidad (m³/m²)', 0.5 , 18. , 3.4 , 
                                    help=('Compacidad calculada conforme al CTE'  '\n\n (volumen/área de la envolvente)'))
-    VENTILACIO_USO_RESIDENCIAL = st.sidebar.slider('Ventilación uso residencial (renovaciones/hora)', 0.3 , 1. , 0.65 )
-    VENTILACIO_INFILTRACIONS = st.sidebar.slider('Ventilación por infiltraciones (renovaciones/hora)', 0.4 , 1.3 , 0.63 )
-    DEMANDA_ACS = st.sidebar.slider('Demanda de ACS (litros/día)', 0. , 1122. , 71.5 )
-    OPACOS_Fach_sum = st.sidebar.slider('Suma de superficies en fachada (m²)', 7. , 250. , 45. )
-    OPACOS_Fach_trans = st.sidebar.slider('Transmitancia térmica media en fachadas (W/m²∙K)', 0.2 , 3.2 , 1.7 )
-    OPACOS_Cubi_sum = st.sidebar.slider('Suma de superficies en cubierta (m²)', 0. , 1224.3 , 11.7 )
-    OPACOS_Cubi_trans = st.sidebar.slider('Transmitancia térmica media en cubiertas (W/m²∙K)', 0. , 5.7 , 0.4 )
-    HUECOS_sum = st.sidebar.slider('Suma de superficies en huecos (m²)', 1. , 157.9 , 11.8 )
-    HUECOS_trans = st.sidebar.slider('Transmitancia térmica media en huecos (W/m²∙K)', 0.6 , 7. , 4.4 )
-    HUECOS_fsol = st.sidebar.slider('Factor solar promedio en huecos (g)', 0. , 1. , 0.5 )
-    PUENTE_sum = st.sidebar.slider('Suma de longitudes con puentes térmicos (metros)', 0. , 1100.5 , 70.2 )
-    PUENTE_trans = st.sidebar.slider('Transmitancia térmica media lineal en puentes térmicos (W/m∙K)', 0. , 2.1 , 0.8 )
+    VENTILACIO_USO_RESIDENCIAL = st.sidebar.slider('Ventilación uso residencial (renovaciones/hora)', 0.3 , 1. , 0.65 ,
+                                                  help=('texto1'  '\n\n texto2'))
+    VENTILACIO_INFILTRACIONS = st.sidebar.slider('Ventilación por infiltraciones (renovaciones/hora)', 0.4 , 1.3 , 0.63 ,
+                                                help=('texto1'  '\n\n texto2'))
+    DEMANDA_ACS = st.sidebar.slider('Demanda de ACS (litros/día)', 0. , 1122. , 71.5 ,
+                                   help=('texto1'  '\n\n texto2'))
+    OPACOS_Fach_sum = st.sidebar.slider('Suma de superficies en fachada (m²)', 7. , 250. , 45. ,
+                                       help=('texto1'  '\n\n texto2'))
+    OPACOS_Fach_trans = st.sidebar.slider('Transmitancia térmica media en fachadas (W/m²∙K)', 0.2 , 3.2 , 1.7 ,
+                                         help=('Valor medio de la transmitancia térmica'  '\n\n de los cerramientos opacos'))
+    OPACOS_Cubi_sum = st.sidebar.slider('Suma de superficies en cubierta (m²)', 0. , 1224.3 , 11.7 ,
+                                       help=('texto1'  '\n\n texto2'))
+    OPACOS_Cubi_trans = st.sidebar.slider('Transmitancia térmica media en cubiertas (W/m²∙K)', 0. , 5.7 , 0.4 ,
+                                         help=('Valor medio de la transmitancia térmica'  '\n\n de las superficies de cubierta'))
+    HUECOS_sum = st.sidebar.slider('Suma de superficies en huecos (m²)', 1. , 157.9 , 11.8 ,
+                                  help=('texto1'  '\n\n texto2'))
+    HUECOS_trans = st.sidebar.slider('Transmitancia térmica media en huecos (W/m²∙K)', 0.6 , 7. , 4.4 ,
+                                    help=('Valor medio de la transmitancia térmica'  '\n\n de las superficies de los huecos'))
+    HUECOS_fsol = st.sidebar.slider('Factor solar promedio en huecos (g)', 0. , 1. , 0.5 ,
+                                   help=('Valor medio del factor solar'  '\n\n de las superficies acristaladas'))
+    PUENTE_sum = st.sidebar.slider('Suma de longitudes con puentes térmicos (metros)', 0. , 1100.5 , 70.2 ,
+                                  help=('Total de las longitudes de los puentes térmicos'  '\n\n en contacto con el exterior'))
+    PUENTE_trans = st.sidebar.slider('Transmitancia térmica media lineal en puentes térmicos (W/m∙K)', 0. , 2.1 , 0.8 ,
+                                    help=('Valor medio de la transmitancia'  '\n\n de los puentes térmicos'))
     InstCAL_Tipo = st.sidebar.selectbox('Tipo de instalación para calefacción', 
                    ("Sin definir", "Efecto Joule", "Caldera Estándar", 
-                    "Bomba de calor", "Caldera Condensación", "Otros sistemas") )
+                    "Bomba de calor", "Caldera Condensación", "Otros sistemas") ,
+                    help=('Se definen 6 posibles casos de'  '\n\n instalaciones de calefacción'))
     InstREF_Tipo = st.sidebar.selectbox('Tipo de instalación para refrigeración', 
-                   ("Sin definir", "Maquina frigorífica", "Bomba de calor", "Otros sistemas") ) 
-    Reducc_EPNoR = st.sidebar.slider('Reducc_EPNoR (kWh/m²∙año)', 0. , 352.8 , 0. )
+                   ("Sin definir", "Maquina frigorífica", "Bomba de calor", "Otros sistemas") ,
+                    help=('Se definen 4 posibles casos de'  '\n\n instalaciones de refrigeración')) 
+    Reducc_EPNoR = st.sidebar.slider('Reducc_EPNoR (kWh/m²∙año)', 0. , 352.8 , 0. ,
+                                    help=('Producción de energía renovable'))
 
     data = {'NORMATIVA_CONSTRUCCIO': NORMATIVA_CONSTRUCCIO,
             'SUPERFICI_HAB': SUPERFICI_HAB,
@@ -101,7 +115,7 @@ with st.beta_expander("Parámetros de entrada:", expanded=False):
             '\n\n- Ventilación por infiltraciones (renovaciones/hora). *Renovaciones hora de aire exterior debido a infiltraciones por la carpintería (en renovaciones/hora).*'
             '\n\n- Demanda de ACS (litros/día). *Demanda de agua caliente sanitaria conforme al CTE (en litros/día).*'
             '\n\n- Suma de superficies en fachada (m²). *Total de las superficies de fachada en contacto con el exterior y que forman parte de la envolvente térmica (en m²).*'
-            '\n\n- Transmitancia térmica media en fachadas (W/m²K). *Valor medio de la transmitancia térmica de los cerramientos que forman parte de la envolvente térmica (en W/m²K).*'
+            '\n\n- Transmitancia térmica media en fachadas (W/m²K). *Valor medio de la transmitancia térmica de los cerramientos opacos que forman parte de la envolvente térmica (en W/m²K).*'
             '\n\n- Suma de superficies en cubierta (m²). *Total de las superficies de cubierta en contacto con el exterior y que forman parte de la envolvente térmica (en m²).*'
             '\n\n- Transmitancia térmica media en cubiertas (W/m²K). *Valor medio de la transmitancia térmica de las superficies de cubierta que forman parte de la envolvente térmica (en W/m²K).*'
             '\n\n- Suma de superficies en huecos (m²). *Total de las superficies de los huecos en contacto con el exterior y que forman parte de la envolvente térmica (en m²).*'
@@ -110,7 +124,7 @@ with st.beta_expander("Parámetros de entrada:", expanded=False):
             '\n\n- Suma de longitudes con puentes térmicos (metros). *Total de las longitudes de los puentes térmicos en contacto con el exterior y que forman parte de la envolvente térmica (en metros).*'
             '\n\n- Transmitancia térmica media lineal en puentes térmicos (W/mK). *Valor medio de la transmitancia térmica de los puentes térmicos que forman parte de la envolvente térmica (en W/mK).*'
             '\n\n- Tipo de instalación para calefacción. *Se definen 6 posibles casos de instalaciones de calefacción: Sin definir, Efecto Joule, Caldera Estándar, Bomba de calor, Caldera de condensación, y Otros sistemas.*'
-            '\n\n- Tipo de instalación para refrigeración. *Se definen 4 posibles casos de instalaciones de calefacción: Sin definir, Maquina frigorífica, Bomba de calor, y Otros sistemas.*'
+            '\n\n- Tipo de instalación para refrigeración. *Se definen 4 posibles casos de instalaciones de refrigeración: Sin definir, Maquina frigorífica, Bomba de calor, y Otros sistemas.*'
             '\n\n- Reducc_EPNoR (kWh/m²∙año). *Producción de energía renovable (en kWh/m²∙año).*'
             )
 
