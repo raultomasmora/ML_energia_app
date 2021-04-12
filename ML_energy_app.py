@@ -17,7 +17,6 @@ hide_st_style = """
 """
 st.markdown(hide_st_style, unsafe_allow_html=True)
 
-@st.cache
 try:
     folder = os.path.dirname(os.path.abspath(__file__))
     name_model = os.path.join(folder, 'model')
