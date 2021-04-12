@@ -8,8 +8,10 @@ En el **[siguiente enlace](https://share.streamlit.io/raultomasmora/ml_energia_a
 
 [![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://share.streamlit.io/raultomasmora/ml_energia_app/main/ML_energy_app.py)
 
+
 ## Sobre el proyecto
 El proyecto ha sido elaborado por el investigador [Raúl Mora-García](https://publons.com/researcher/1717710/raul-tomas-mora-garcia/publications/) rtmg@ua.es en colaboración con [Grupo Valero](https://www.grupovalero.com/) durante el año 2020. Subvención AEST/2019/005 del Programa para la promoción de la investigación científica, el desarrollo tecnológico y la innovación en la Comunitat Valenciana (Anexo VII) [DOGV nº8355](http://www.dogv.gva.es/datos/2018/08/06/pdf/2018_7758.pdf).
+
 
 ## Descripción del proyecto
 Esta aplicación predice el consumo de energía (kWh/m²año) a partir de miles de datos de certificados energéticos elaborados con el programa [CE3X](https://www.efinova.es/CE3X). Después se evalúa la posible reducción del consumo de energía al mejorar el aislamiento de la envolvente.
@@ -19,6 +21,7 @@ Esta aplicación predice el consumo de energía (kWh/m²año) a partir de miles 
 **Datos:** Se utilizan más de 10.000 datos de certificados energéticos de viviendas individuales de la provincia de Barcelona (ubicados en zona climática C2), procedentes del [Instituto Catalán de Energía](http://icaen.gencat.cat/es/inici/).
 
 **Precisión:** El modelo de conjunto se ha probado en un conjunto de datos de entrenamiento obteniéndose un R2 de 0.888, y en el conjunto de prueba un R2 de 0.732. Para datos nuevos no utilizados en el modelo se ha obtenido un R2 de 0.790, lo que indica que el modelo generaliza correctamente.
+
 
 ## Parámetros necesarios en el modelo
 Descripción de los parámetros utilizados en el modelo:
@@ -41,6 +44,7 @@ Descripción de los parámetros utilizados en el modelo:
 - Tipo de instalación para refrigeración. *Se definen 4 posibles casos de instalaciones de calefacción: Sin definir, Maquina frigorífica, Bomba de calor, y Otros sistemas.*
 - Reducc_EPNoR (kWh/m²∙año). *Producción de energía renovable (en kWh/m²∙año).*
 
+
 ## Historia
 **En proyecto**
 - Incluir nuevos datos descriptivos de los resultados (gráficos y mapas).
@@ -48,11 +52,11 @@ Descripción de los parámetros utilizados en el modelo:
 - Mejorar el poder predictivo del modelo ML.
 
 **v.0.3**
-- Se actualiza a la versión 0.80 de `Streamlit`.
-- El gráfico de consumo de energía se hace interactivo con plotly.express.
+- Se actualiza a la versión `Streamlit 0.80.0`.
+- El gráfico de consumo de energía se hace interactivo con `plotly.express`.
 - Se implementan ventanas descriptivas de cada parámetro del modelo en la barra lateral.
 - Se amplía la descripción de los parámetros del modelo.
-- Se actualiza la información descriptiva en GitHub.
+- Se actualiza la información descriptiva en `GitHub`.
 - Se corrigen errores menores descriptivos y de visualización.
 
 **v.0.2**
@@ -61,7 +65,7 @@ Descripción de los parámetros utilizados en el modelo:
 - Se actualiza el logo del proyecto.
 
 **v.0.1**
-- Se crea el modelo ML en Python 3.7 y se implementa en Streamlit 0.71.0.
+- Se crea el modelo ML en `Python 3.7` y se implementa en `Streamlit 0.71.0`.
 - Se utiliza un *enseble learning* que combina tres algoritmos de aprendizaje (*catboost*, *lightgbm* y *gbr*).
 - La aplicación web carga el modelo, captura los datos de entrada y hace predicciones.
 
