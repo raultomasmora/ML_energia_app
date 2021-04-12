@@ -42,8 +42,11 @@ def user_input_features():
     NORMATIVA_CONSTRUCCIO = st.sidebar.selectbox('Normativa de construcción', 
                             ("Ant_NBECT79", "NBECT79", "CTE2006"))
     SUPERFICI_HAB = st.sidebar.slider('Superficie habitable (m²)', 20. , 250. , 70. , 
-                                      help=f'''Hola mundo
-                                      esto es una prueba, no se lo largo que puede entrar el texto en esta caja''')
+                                      help="""This is a
+                                            very long string,
+                                            containing commas,
+                                            that I split up
+                                            for readability""".replace('\n',' '))
     COMPACITAT = st.sidebar.slider('Compacidad (m³/m²)', 0.5 , 18. , 3.4 , 
                                    help=('Hola mundo' \
                                         '\n esto es una prueba, no se lo largo que puede entrar el texto en esta caja'))
