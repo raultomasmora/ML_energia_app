@@ -1,0 +1,4 @@
+# heroku .slugignore
+# https://devcenter.heroku.com/articles/slug-compiler#ignoring-files-with-slugignore
+/images
+*.md
